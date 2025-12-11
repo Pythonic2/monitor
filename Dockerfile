@@ -11,4 +11,4 @@ COPY . /code
 
 EXPOSE 8123
 
-CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8123"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8123"]
