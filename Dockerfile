@@ -1,14 +1,14 @@
 FROM python:3.12-slim
 
-WORKDIR /app
+WORKDIR /code
 
-# Copiar projeto
-COPY . /app
+COPY ./requirements.txt /code/requirements.txt
 
-# Instalar dependências
-RUN pip install --no-cache-dir --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && apt-get install -y build-essential
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-EXPOSE 8000
+COPY . /code
+
+EXPOSE 8123
 
 CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8123"]
