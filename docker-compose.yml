@@ -1,9 +1,9 @@
 services:
-  api:
+  apix:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: monitor_api
+    container_name: monitor_apix
     restart: always
 
     networks:
