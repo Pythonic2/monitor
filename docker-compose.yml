@@ -1,0 +1,42 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: monitor_api
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - pi_default
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app/src
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  db:
+    image: postgres:16-alpine
+    container_name: monitor_db
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - pi_default
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+networks:
+  pi_default:
+    external: true
+
+volumes:
+  pgdata:
