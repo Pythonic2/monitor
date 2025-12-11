@@ -15,7 +15,7 @@ services:
     healthcheck:
       # O healthcheck roda DENTRO do container.
       # Portanto deve chamar localhost:8000 (e NÃO 8123).
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8123/health"]
       interval: 10s
       timeout: 5s
       retries: 5
