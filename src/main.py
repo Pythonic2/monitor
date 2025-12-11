@@ -163,12 +163,12 @@ TORTOISE_ORM = {
         "default": {
             "engine": "tortoise.backends.asyncpg",
             "credentials": {
-                "host": os.getenv("DB_HOST"),
-                "port": os.getenv("DB_PORT"),
-                "user": os.getenv("DB_USER"),
-                "password": os.getenv("DB_PASSWORD"),
-                "database": os.getenv("DB_NAME"),
-                "server_settings": {"search_path": os.getenv("DB_SCHEMA")},
+                "host": "192.168.15.6",
+                "port": "5432",
+                "user": "cloud_user",
+                "password": "37192541aaSS@",
+                "database": "cloudbooster_db",
+                "server_settings": {"search_path": "monitoring"},
             },
         }
     },
